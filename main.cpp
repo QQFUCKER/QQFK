@@ -24,7 +24,7 @@ int fororderx(char order[10],int len)///！！！！创举！！将命令哈希�
     return ans;
 }
 
-int main()
+int main(int argc,char **argv)
 {
     T key;
     key=forlogin();///用于处理登录，本来有本地则直接登录，交还进程。否则提示登录，成功后交还进程。(初始化key)
