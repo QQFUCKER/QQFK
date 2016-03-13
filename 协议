@@ -1,5 +1,7 @@
-协议
+#协议
+
 撰写：williamking5,cnilin
+
 一、云存储文件格式：
 1.根目录下：user.conf
   user.conf每行内容：用户名 密码
@@ -15,32 +17,33 @@
     即附件文件。
 二、客户端格式命令：
 0.注册
-用法：sign 用户名 密码
-输出：若当前不存在该用户名则显示'Congratulations'，否则显示'username invaild'。
+  用法：sign 用户名 密码
+  输出：若当前不存在该用户名则显示'Congratulations'，否则显示'username invaild'。
 1.查找好友
-用法：friend
-输出：当前所有用户的好友名单。
+  用法：friend
+  输出：当前所有用户的好友名单。
 2.查找或与某个用户加为好友
-用法：find usernam
-输出：若存在username则返回'user exsit'，否则返回'Not found a user called $username'
-用法：find username -add
-输出：若存在username且未与其成为好友则返回'OK',否则，若不存在用户，则返回'Not found a user called $user'，若已经成为好友，返回'YOU ARE FRIENDS'
+  用法：find usernam
+  输出：若存在username则返回'user exsit'，否则返回'Not found a user called $username'
+  
+  用法：find username -add
+  输出：若存在username且未与其成为好友则返回'OK',否则，若不存在用户，则返回'Not found a user called $user'，若已经成为好友，返回'YOU ARE FRIENDS'
 3.切换到与某个好友交流频道。
-用法：lock id
-这id就是friend命令结果中该好友的序号
+  用法：lock id
+  这id就是friend命令结果中该好友的序号
 4.与好友发短消息。
-用法：msg s
-将s发送到对方的目录下。
+  用法：msg s
+  将s发送到对方的目录下。
 5.将链接文章发送给好友。
-用法：send file
-注意：file应该填写绝对路径的名称，且大小不得超过1MB
+  用法：send file
+  注意：file应该填写绝对路径的名称，且大小不得超过1MB
 6.显示聊天记录
-用法：h
-注意：只显示当前lock用户的历史记录，若没有lock则不显示历史记录。
+  用法：h
+  注意：只显示当前lock用户的历史记录，若没有lock则不显示历史记录。
 7.清空聊天记录
-用法：c
-注意：只清空当前lock用户的历史记录，若没有lock则不清空历史记录。
+  用法：c
+  注意：只清空当前lock用户的历史记录，若没有lock则不清空历史记录。
 8.帮助文档
-用法：help
+  用法：help
 9.退出程序
-用法：exit
+  用法：exit
