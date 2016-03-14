@@ -24,7 +24,7 @@
 1.查找好友
   用法：friend
   输出：当前所有用户的好友名单。
-  (1.0版本)函数约定void friend(void)，函数应该显示所有当前用户的好友。
+  (1.0版本)函数约定void frd(void)，函数应该显示所有当前用户的好友。
 2.查找或与某个用户加为好友
   用法：find username
   输出：若存在username且已经成为好友则返回'user exsit,you are friends'，否则若不存在用户，返回'user not found',若存在但是没有成为好友，那么加为好友并返回'become friends'
