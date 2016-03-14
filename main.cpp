@@ -1,46 +1,83 @@
 #include<stdio.h>
 #include<string.h>
-#include<stdlib.h>
+#include<math.h>
+#include<iostream>
+using namespace std;
 
-///本地存放一个名为location.conf 来记录当前用户，处理初始化，以及自动登录等事情。（可以进行简单的加法加密）
+#include "order.h"
+//order.h 含有负责处理命令行的函数
+#include "login.h"
+//login.h 含有负责处理登陆的函数
 
-struct T ///结构体形参接口，如果需要传别的可适当添加形参。。。为了明了就不用全局变量处理了
-{
-    int forlong[20];///为了稳定。记录本结构体中数组长度，此时0为username长度，1为sockedname长度
-    char username[50];///当前在登录的用户
-    char sockedname[50];///当前锁定朋友
-    int flag;///1-99999之间的整数
-};
-
-int fororderx(char order[10],int len)///！！！！创举！！将命令哈希成一个int。这样下面处理命令的时候直接可以swich。哈希方式是26进制法，所以只要
-{                                    ///命令不一样，哪怕差一个字母或者多少一个，这个int都不一样。，，这样以来命令处理变得十分方便
-    int sk=1;
-    int ans=0;
-    for(int i=0; i<len; i++)
-    {
-        ans+=(order[i]-'a')*sk;
-        sk*=26;
-    }
-    return ans;
+//下面这些函数仅为了保证程序可以编译，若要调试函数，请删除同名函数。
+int sign(char *x,char *y){
+	return 1;
 }
+void find(char *x){}
+int lock(char *x){
+	return 1;
+}
+void msg(char *x,char *y,char *z){}
+void frd(){}
+void refresh(void){}
+void send(char *x,char *y,char *z){}
+void h(char *x){}
+void c(char *x){}
+void _help(){}
+void _exit(){}
 
-int main(int argc,char **argv)
-{
-    T key;
-    key=forlogin();///用于处理登录，本来有本地则直接登录，交还进程。否则提示登录，成功后交还进程。(初始化key)
-    char order[10];
-    wait_for_order(key);///输出等待命令提示。根据key的情况输出不同情况。
-    while(scanf("%s",order)!=EOF)
-    {
-        int orderx=fororderx(order,strlen(order));
-        ///接下来直接根据不同orderx调用不同函数就行了。
+char lockname[20];
+char myname[20];
+int flag;
+int lock_status;
 
+int main(){
+	char tmp[500];
+	struct order_class cmd;
+	int login_status=login(myname);
+	if (!login_status){
+		while (1){
+			cout<<"Please login >";
+			fgets(tmp,100,stdin);
+			cmd=order(tmp);
+			if (cmd.argv==-1) printf("%s\n",cmd.error);
+			else if (cmd.argv==10) return 0;
+			else if (!cmd.argv) {
+				if (sign(cmd.argc[0],cmd.argc[1])) {
+					printf("Hello, %s\n",cmd.argc[0]);
+					strcpy(myname,cmd.argc[0]);
+					break;
+				}
+				else printf("Failed\n");
+			}
+		}
+	}
+	else printf("Hello, %s\n",myname);
 
-
-        wait_for_order(key);
-    }
-
-
-
-    return 0;
+	while (1){
+		printf("<%s>",myname);
+		if (lock_status) printf("to <%s>",lockname);
+		fgets(tmp,100,stdin);
+		cmd=order(tmp);
+		if (cmd.argv==3) {
+			if (lock(cmd.argc[1])) {
+				strcpy(lockname,cmd.argc[1]);
+				lock_status=1;
+				continue;
+			}
+		}
+		switch(cmd.argv){
+			case -1:printf("%s\n",cmd.error);break;
+			case 1 :frd();break;
+			case 2 :find(cmd.argc[1]);break;
+			case 4 :if (lock_status) msg(myname,lockname,cmd.argc[1]);break;
+			case 5 :refresh();break;
+			case 6 :if (lock_status) send(myname,lockname,cmd.argc[1]);break;
+			case 7 :if (lock_status) h(lockname);break;
+			case 8 :if (lock_status) c(lockname);break;
+			case 9 :_help();break;
+			case 10:return 0;
+		}
+	}
+	return 0;
 }
