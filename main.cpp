@@ -26,10 +26,10 @@ void c(char *x){}
 void _help(){}
 void _exit(){}
 
-char lockname[20];
-char myname[20];
-int flag;
-int lock_status;
+char lockname[20];//锁定名
+char myname[20];//用户名
+int flag;//flag
+int lock_status;//是否锁定
 
 int main(){
 	char tmp[500];
