@@ -45,8 +45,6 @@ void refresh(void){}
 
 int main(){
 	char tmp[500];
-	sprintf(tmp,"./qshell account %s %s",AK,SK);
-	system(tmp);
 	struct order_class cmd;
 	int login_status=login(myname);
 	if (!login_status){

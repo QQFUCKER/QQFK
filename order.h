@@ -11,16 +11,23 @@ void mm(char * x){
 }
 struct order_class order(char *x){
 	struct order_class result;
+
 	while (x[0]==' '||x[0]=='\t') x++;
+
 	int k;
 	if (strstr(x," ")==NULL){
 		if (strstr(x,"\t")==NULL)
 			k=strstr(x,"\n")-x;
 		else k=strstr(x,"\t")-x;
+
 	}
 	else {
 		k=strstr(x," ")-x;
-		if (k>strstr(x,"\t")-x) k=strstr(x,"\t")-x;
+			
+	//	if (k>strstr(x,"\t")-x) k=strstr(x,"\t")-x;
+
+
+
 	}
 
 	x[k]=0;
@@ -55,7 +62,7 @@ struct order_class order(char *x){
 		}
 		else {
 			k=strstr(x," ")-x;
-			if (k>strstr(x,"\t")-x) k=strstr(x,"\t")-x;
+	//		if (k>strstr(x,"\t")-x) k=strstr(x,"\t")-x;
 		}
 
 		x[k]=0;
