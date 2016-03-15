@@ -36,6 +36,7 @@ struct order_class order(char *x){
 	if (!strcmp(x,"c")) result.argv=8;
 	if (!strcmp(x,"help")) result.argv=9;
 	if (!strcmp(x,"exit")) result.argv=10;
+	if (!strcmp(x,"logout")) result.argv=11;
 
 
 	if (result.argv==0){

@@ -2,6 +2,7 @@
 #include<string.h>
 #include<math.h>
 #include<iostream>
+#include<stdlib.h>
 using namespace std;
 
 #include "order.h"
@@ -9,6 +10,11 @@ using namespace std;
 #include "login.h"
 //login.h 含有负责处理登陆的函数
 #include "help.h"
+//help.h 含有帮助函数
+#include "clear.h"
+//clear.h 含有清空历史记录的函数
+#include "history.h"
+//history.h 含有显示历史记录的函数
 
 //下面这些函数仅为了保证程序可以编译，若要调试函数，请删除同名函数。
 int sign(char *x,char *y){
@@ -22,8 +28,6 @@ void msg(char *x,char *y,char *z){}
 void frd(){}
 void refresh(void){}
 void send(char *x,char *y,char *z){}
-void h(char *x){}
-void c(char *x){}
 void _exit(){}
 
 char lockname[20];//锁定名
@@ -76,7 +80,8 @@ int main(){
 			case 7 :if (lock_status) h(lockname);break;
 			case 8 :if (lock_status) c(lockname);break;
 			case 9 :_help();break;
-			case 10:return 0;
+			case 10:return 0;break;
+			case 11:system("rm -f .location.conf");system("rm -f *.his");return 0;
 		}
 	}
 	return 0;
