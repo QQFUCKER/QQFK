@@ -3,8 +3,19 @@
 #include<math.h>
 #include<iostream>
 #include<stdlib.h>
-using namespace std;
+#include<time.h>
+char AK[50]="iFYg0UuCbUHK_eSj1SxzjrAH68kVtRoPKyhTcOiv";
+char SK[50]="ocn7jjNDyYUQjjrJNS49RZi881NA60My8kZRq3f3";
+char LK[50]="7xrasr.com1.z0.glb.clouddn.com";
+char BK[50]="oucjudge";
+//上面是七牛的密钥以及空间链接名称和空间的名称
 
+char lockname[20];//锁定名
+char myname[20];//用户名
+int flag;//这是唯一一个可以直接引用的全局变量，不允许其他变量名为flag
+int lock_status;//是否锁定
+
+using namespace std;
 #include "order.h"
 //order.h 含有负责处理命令行的函数
 #include "login.h"
@@ -15,6 +26,8 @@ using namespace std;
 //clear.h 含有清空历史记录的函数
 #include "history.h"
 //history.h 含有显示历史记录的函数
+#include "send.h"
+//send.h 含有发送附件的函数
 
 //下面这些函数仅为了保证程序可以编译，若要调试函数，请删除同名函数。
 int sign(char *x,char *y){
@@ -27,13 +40,8 @@ int lock(char *x){
 void msg(char *x,char *y,char *z){}
 void frd(){}
 void refresh(void){}
-void send(char *x,char *y,char *z){}
-void _exit(){}
+//以上
 
-char lockname[20];//锁定名
-char myname[20];//用户名
-int flag;//flag
-int lock_status;//是否锁定
 
 int main(){
 	char tmp[500];
