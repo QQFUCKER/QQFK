@@ -8,6 +8,7 @@ using namespace std;
 //order.h 含有负责处理命令行的函数
 #include "login.h"
 //login.h 含有负责处理登陆的函数
+#include "help.h"
 
 //下面这些函数仅为了保证程序可以编译，若要调试函数，请删除同名函数。
 int sign(char *x,char *y){
@@ -23,7 +24,6 @@ void refresh(void){}
 void send(char *x,char *y,char *z){}
 void h(char *x){}
 void c(char *x){}
-void _help(){}
 void _exit(){}
 
 char lockname[20];//锁定名
