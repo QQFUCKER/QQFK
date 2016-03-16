@@ -7,7 +7,7 @@
   user.conf每行内容：用户名 密码
     这是用于保存所有用户的配置文件。
 2.每个用户(username)的目录
-  username（收件人）/friend.conf
+  username/friend.conf
     这是该用户的朋友名单。
   username（收件人）/14位日期号码/username（发件人）/5位号码.msg
     这是交流所需的信息文件，内部所有信息直接显示在客户端即可。
